@@ -1,63 +1,140 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19706550&assignment_repo_type=AssignmentRepo)
-# Express.js RESTful API Assignment
+# Express.js Assignment
 
-This assignment focuses on building a RESTful API using Express.js, implementing proper routing, middleware, and error handling.
-
-## Assignment Overview
-
-You will:
-1. Set up an Express.js server
-2. Create RESTful API routes for a product resource
-3. Implement custom middleware for logging, authentication, and validation
-4. Add comprehensive error handling
-5. Develop advanced features like filtering, pagination, and search
+This project is an Express.js server for Week 2 of the MERN Stack course.
 
 ## Getting Started
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Install dependencies:
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) installed
+
+### Installation
+
+```bash
+git clone https://github.com/your-username/week-2-express-js-assignment-DOMOSH85.git
+cd week-2-express-js-assignment-DOMOSH85
+npm install
+```
+
+### Running the Server
+
+```bash
+npm start
+```
+The server will start on [http://localhost:3000](http://localhost:3000) by default.
+
+---
+
+## API Documentation
+
+### Base URL
+
+```
+http://localhost:3000
+```
+
+### Endpoints
+
+#### 1. `GET /api/items`
+
+- **Description:** Retrieve all items.
+- **Response:**
+   ```json
+   [
+     {
+      "id": 1,
+      "name": "Item 1"
+     },
+     {
+      "id": 2,
+      "name": "Item 2"
+     }
+   ]
    ```
-   npm install
+
+#### 2. `GET /api/items/:id`
+
+- **Description:** Retrieve a single item by ID.
+- **Response:**
+   ```json
+   {
+     "id": 1,
+     "name": "Item 1"
+   }
    ```
-4. Run the server:
+
+#### 3. `POST /api/items`
+
+- **Description:** Create a new item.
+- **Request Body:**
+   ```json
+   {
+     "name": "New Item"
+   }
    ```
-   npm start
+- **Response:**
+   ```json
+   {
+     "id": 3,
+     "name": "New Item"
+   }
    ```
 
-## Files Included
+#### 4. `PUT /api/items/:id`
 
-- `Week2-Assignment.md`: Detailed assignment instructions
-- `server.js`: Starter Express.js server file
-- `.env.example`: Example environment variables file
+- **Description:** Update an existing item.
+- **Request Body:**
+   ```json
+   {
+     "name": "Updated Item"
+   }
+   ```
+- **Response:**
+   ```json
+   {
+     "id": 1,
+     "name": "Updated Item"
+   }
+   ```
 
-## Requirements
+#### 5. `DELETE /api/items/:id`
 
-- Node.js (v18 or higher)
-- npm or yarn
-- Postman, Insomnia, or curl for API testing
+- **Description:** Delete an item by ID.
+- **Response:**
+   ```json
+   {
+     "message": "Item deleted"
+   }
+   ```
 
-## API Endpoints
+---
 
-The API will have the following endpoints:
+## Example Requests
 
-- `GET /api/products`: Get all products
-- `GET /api/products/:id`: Get a specific product
-- `POST /api/products`: Create a new product
-- `PUT /api/products/:id`: Update a product
-- `DELETE /api/products/:id`: Delete a product
+### Using `curl`
 
-## Submission
+**Get all items:**
+```bash
+curl http://localhost:3000/api/items
+```
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+**Create an item:**
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"name":"Sample"}' http://localhost:3000/api/items
+```
 
-1. Complete all the required API endpoints
-2. Implement the middleware and error handling
-3. Document your API in the README.md
-4. Include examples of requests and responses
+**Update an item:**
+```bash
+curl -X PUT -H "Content-Type: application/json" -d '{"name":"Updated"}' http://localhost:3000/api/items/1
+```
 
-## Resources
+**Delete an item:**
+```bash
+curl -X DELETE http://localhost:3000/api/items/1
+```
 
-- [Express.js Documentation](https://expressjs.com/)
-- [RESTful API Design Best Practices](https://restfulapi.net/)
-- [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) 
+---
+
+## License
+
+MIT
